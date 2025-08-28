@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="d-flex justify-content-center align-items-center vh-100 login-bg">
+  <div class="card shadow rounded-4 p-4" style="max-width: 400px; width: 100%;">
+    <div class="card-body">
+      <h3 class="text-center mb-4">Login</h3>
+
+      <form>
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input [(ngModel)] = "loginObj.emailId" name="emailId" type="text" id="username" class="form-control" placeholder="Enter Username" required>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input [(ngModel)] = "loginObj.password" name="password" type="password" id="password" class="form-control" placeholder="Enter Password" required>
+        </div>
+
+        <!-- Submit -->
+        <button type="button" (click)="onLogin()" class="btn btn-primary w-100">Sign In</button>
+      </form>
+    </div>
+  </div>
+</div>
