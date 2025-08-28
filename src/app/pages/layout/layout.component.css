@@ -1,0 +1,19 @@
+/* Gradient background for navbar */
+.custom-navbar {
+  background: linear-gradient(90deg, #4e54c8, #2575fc);
+}
+
+/* Gradient button */
+.btn-gradient {
+  background: linear-gradient(90deg, #ff512f, #dd2476);
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+  color: #fff;
+}
