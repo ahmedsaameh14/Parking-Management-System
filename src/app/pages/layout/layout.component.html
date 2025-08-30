@@ -17,11 +17,15 @@
 
     <!-- Navbar items -->
     <div class="collapse navbar-collapse" id="navbarContent">
-      <div class="ms-auto d-flex gap-2">
-        <a routerLink="/dashboard" class="btn btn-outline-light px-4">Home</a>
-        <button class="btn btn-danger" (click)="onLogout()">Log Out</button>
-      </div>
-    </div>
+  <div class="ms-auto d-flex align-items-center gap-3">
+    <a routerLink="/dashboard" class="btn btn-outline-light px-4">Home</a>
+    <span class="text-white fw-bold">
+      {{ _userS.loggedUserData.emailId }}
+    </span>
+    <button class="btn btn-danger" (click)="onLogout()">Log Out</button>
+  </div>
+</div>
+
   </div>
 </nav>
 

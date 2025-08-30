@@ -7,10 +7,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  loggedUserData!: IUserModel;
 
-  constructor(private http: HttpClient) { }
+  // This to sava data after reload page 
+  constructor(private http: HttpClient) { 
+  const loggeddata = localStorage.getItem('parkUser');
+  if(loggeddata != null){
+    this.loggedUserData = JSON.parse(loggeddata)
+  }
+}
 
-  // URL: 'https://api.freeprojectapi.com/api/SmartParking/login'
+  // URL: "https://api.freeprojectapi.com/api/SmartParking/login"
 
   loginUser(data:User): Observable<IUserModel> {
     return this.http.post<IUserModel>("https://api.freeprojectapi.com/api/SmartParking/login", data)

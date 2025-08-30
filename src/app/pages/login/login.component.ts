@@ -31,6 +31,7 @@ export class LoginComponent {
         if (res) {
           alert('✅ User Found... Welcome');
           localStorage.setItem("parkUser", JSON.stringify(res))
+          this._userS.loggedUserData = res
           this.router.navigateByUrl("/dashboard")
         } else {
           alert('❌ Invalid username or password');
