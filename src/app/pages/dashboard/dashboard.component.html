@@ -49,24 +49,27 @@
         <!-- Select Site -->
         <div class="col-12 col-md-4">
           <label class="form-label">Select Site</label>
-          <select class="form-select">
+          <select class="form-select" [(ngModel)]="siteId" (change)="getBuilding()">
             <option selected disabled>Choose site...</option>
-            <option *ngFor="let site of siteList">{{site.siteName}}</option>
+            <option [value]="site.siteId" *ngFor="let site of siteList">{{site.siteName}}</option>
           </select>
         </div>
 
         <!-- Select Building -->
         <div class="col-12 col-md-4">
           <label class="form-label">Select Building</label>
-          <select class="form-select">
+          <select class="form-select" [(ngModel)]="buildingId" (change)="getFloor()">
             <option selected disabled>Choose building...</option>
+            <option [value]="building.buildingId" *ngFor="let building of buildingList ">{{building.buildingName}}</option>
           </select>
         </div>
 
         <!-- Select Floor -->
         <div class="col-12 col-md-4">
           <label class="form-label">Select Floor</label>
-          <select class="form-select">
+          <select class="form-select" [(ngModel)]="floorId">
+            <option selected disabled>Choose floor...</option>
+            <option [value]="floor.floorId" *ngFor="let floor of floorList ">{{floor.floorNo}}</option>
           </select>
         </div>
       </div>

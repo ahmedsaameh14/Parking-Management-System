@@ -11,10 +11,16 @@ export class MasterService {
 
   constructor(private http:HttpClient , private _userS:UserService) { }
 
-  URL = "https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id=";
-
   getSitesByClientId(): Observable<ResponseModel>{
     const clientId = this._userS.loggedUserData.extraId;
-    return this.http.get<ResponseModel>(this.URL + clientId)
+    return this.http.get<ResponseModel>("https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id="+ clientId)
+  }
+
+  getBuildingBySiteId(siteId:number): Observable<ResponseModel>{
+    return this.http.get<ResponseModel>("https://api.freeprojectapi.com/api/SmartParking/GetBuildingBySiteId?id="+ siteId)
+  }
+
+  GetFloorsByBuildingId(buildingId:number): Observable<ResponseModel>{
+    return this.http.get<ResponseModel>("https://api.freeprojectapi.com/api/SmartParking/GetFloorsByBuildingId?id="+ buildingId)
   }
 }
