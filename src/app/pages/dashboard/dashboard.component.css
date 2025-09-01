@@ -12,3 +12,10 @@ h1 {
   transition: all 0.2s ease-in-out;
 }
 
+/* Optional: small visual polish */
+.card-bodys {
+  padding: 1.5rem 1.25rem;
+}
+.form-label {
+  font-weight: 600;
+}
