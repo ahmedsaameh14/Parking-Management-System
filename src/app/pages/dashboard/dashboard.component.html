@@ -5,7 +5,7 @@
     <p class="text-muted">Daily summary of parking activities</p>
   </div>
 
-    <!-- Stats Section -->
+  <!-- Stats Section -->
   <div class="row g-4 mb-4">
     <div class="col-md-3">
       <div class="card text-center shadow-sm border-0">
@@ -49,7 +49,7 @@
         <!-- Select Site -->
         <div class="col-12 col-md-4">
           <label class="form-label">Select Site</label>
-          <select class="form-select" [(ngModel)]="siteId" (change)="getBuilding()">
+          <select class="form-select" [(ngModel)]="siteId" (change)="onSiteSelect()">
             <option selected disabled>Choose site...</option>
             <option [value]="site.siteId" *ngFor="let site of siteList">{{site.siteName}}</option>
           </select>
@@ -58,9 +58,10 @@
         <!-- Select Building -->
         <div class="col-12 col-md-4">
           <label class="form-label">Select Building</label>
-          <select class="form-select" [(ngModel)]="buildingId" (change)="getFloor()">
+          <select class="form-select" [(ngModel)]="buildingId" (change)="onBuildingSelect()">
             <option selected disabled>Choose building...</option>
-            <option [value]="building.buildingId" *ngFor="let building of buildingList ">{{building.buildingName}}</option>
+            <option [value]="building.buildingId" *ngFor="let building of buildingList">{{building.buildingName}}
+            </option>
           </select>
         </div>
 
@@ -69,19 +70,18 @@
           <label class="form-label">Select Floor</label>
           <select class="form-select" [(ngModel)]="floorId" (change)="onFloorSelect()">
             <option selected disabled>Choose floor...</option>
-            <option [value]="floor.floorId" *ngFor="let floor of floorList ">{{floor.floorNo}}</option>
+            <option [value]="floor.floorId" *ngFor="let floor of floorList">{{floor.floorNo}}</option>
           </select>
         </div>
       </div>
+
     </div>
   </div>
 
-    <!-- Parking Spots Layout -->
+  <!-- Parking Spots Layout -->
   <div class="parking-layout" id="parkingLayout">
-    <div class="parking-spot available" 
-        *ngFor="let spot of parkingSpotArray; let i = index" 
-        data-id="{{spot}}" 
-        data-status="available">
+    <div class="parking-spot available" *ngFor="let spot of parkingSpotArray; let i = index" data-id="{{spot}}"
+      data-status="available">
       <i class="bi bi-p-square"></i>
       <div class="spot-number">A{{i+1}}</div>
       <div class="spot-status">Available</div>

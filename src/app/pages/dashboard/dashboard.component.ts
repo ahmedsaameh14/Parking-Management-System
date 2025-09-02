@@ -49,4 +49,23 @@ export class DashboardComponent implements OnInit {
       this.parkingSpotArray.push(index);
     }
   }
+
+  // test 
+  onSiteSelect() {
+  this.getBuilding();          // fetch buildings for this site
+  this.buildingId = 0;      // reset building
+  this.floorId = 0;         // reset floor
+  this.buildingList = [];      // clear old data
+  this.floorList = [];
+  this.parkingSpotArray = []; // clear spots when site changes
+}
+
+onBuildingSelect() {
+  this.getFloor();             // fetch floors for this building
+  this.floorId = 0;         // reset floor
+  this.floorList = [];         // clear old data
+  this.parkingSpotArray = []; // clear spots when building changes
+}
+
+
 }
