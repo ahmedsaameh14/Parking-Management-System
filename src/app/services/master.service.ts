@@ -28,4 +28,8 @@ export class MasterService {
     return this.http.post<ResponseModel>("https://api.freeprojectapi.com/api/SmartParking/AddParking" , obj)
   }
 
+  GetAllParkingByFloor(floorId:number): Observable<ResponseModel>{
+    return this.http.get<ResponseModel>("https://api.freeprojectapi.com/api/SmartParking/GetAllParkingByFloor?id="+ floorId)
+  }
+
 }

@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild, viewChild } from '@angular/core';
 import { MasterService } from '../../services/master.service';
 import { IBuilding, IFloor, ISite, ResponseModel } from '../../models/user.model';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule , FormsModule],
+  imports: [CommonModule , FormsModule , NgClass],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -39,12 +39,24 @@ export class DashboardComponent implements OnInit {
     "parkingNo": ""
   }
 
+  bookedSpotList: any[] = [];
+
   ngOnInit(){
     this.getSites()
   }
 
+  checkIfBooked(spotNo:number){
+    const isExist = this.bookedSpotList.find(m => m.parkSpotNo == spotNo);
+    if(isExist != undefined){
+      return isExist
+    }else {
+      return undefined;
+    }
+  }
+
   openModel(spotNo : number){
-    this.bookSpotObj.parkSpotNo = spotNo
+    this.bookSpotObj.parkSpotNo = spotNo;
+    this.bookSpotObj.floorId = this.floorId;
     if ( this.bookModel ){
       this.bookModel.nativeElement.style.display = 'block'
     }
@@ -59,6 +71,7 @@ export class DashboardComponent implements OnInit {
   onBookSpot(){
     this._masterS.bookSpot(this.bookSpotObj).subscribe((res:any)=>{
       alert("Spot Booked Successfully")
+      this.getBooking()
     })
   }
 
@@ -84,6 +97,13 @@ export class DashboardComponent implements OnInit {
     for (let index = 1 ; index <= floor.totalParkingSpots ; index++){
       this.parkingSpotArray.push(index);
     }
+    this.getBooking()
+  }
+
+  getBooking(){
+     this._masterS.GetAllParkingByFloor(this.floorId).subscribe((res:any)=>{
+      this.bookedSpotList = res.data
+    })
   }
 
   // test 

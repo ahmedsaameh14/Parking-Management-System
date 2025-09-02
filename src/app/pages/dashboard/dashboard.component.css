@@ -60,7 +60,7 @@ h1 {
 }
 
 /* Red for unavailable */
-.unavailable {
+.occupied {
   background-color: #dc3545; /* Bootstrap red */
 }
 
