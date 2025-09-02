@@ -32,4 +32,8 @@ export class MasterService {
     return this.http.get<ResponseModel>("https://api.freeprojectapi.com/api/SmartParking/GetAllParkingByFloor?id="+ floorId)
   }
 
+  releaseSpot(obj:any): Observable<ResponseModel> {
+    return this.http.post<ResponseModel>("https://api.freeprojectapi.com/api/SmartParking/MarExit" , obj)
+  }
+
 }

@@ -7,35 +7,11 @@
 
   <!-- Stats Section -->
   <div class="row g-4 mb-4">
-    <div class="col-md-3">
+    <div class="col-md-12">
       <div class="card text-center shadow-sm border-0">
         <div class="card-body">
           <h6 class="text-muted">Total Spots</h6>
           <h3 class="fw-bold text-primary">{{parkingSpotArray.length}}</h3>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card text-center shadow-sm border-0">
-        <div class="card-body">
-          <h6 class="text-muted">Available</h6>
-          <h3 class="fw-bold text-success">35</h3>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card text-center shadow-sm border-0">
-        <div class="card-body">
-          <h6 class="text-muted">Occupied</h6>
-          <h3 class="fw-bold text-danger">85</h3>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card text-center shadow-sm border-0">
-        <div class="card-body">
-          <h6 class="text-muted">Occupancy Rate</h6>
-          <h3 class="fw-bold text-warning">71%</h3>
         </div>
       </div>
     </div>
@@ -82,7 +58,7 @@
   <div class="parking-layout" id="parkingLayout">
     @for(spot of parkingSpotArray ; track $index){
     <ng-container *ngIf="checkIfBooked(spot) as bookInf">
-      <div class="parking-spot occupied">
+      <div class="parking-spot occupied" (click)="openReleaseModel(bookInf.parkId)">
         <i class="bi bi-p-square"></i>
         <div class="spot-number">{{spot}}</div>
         <div class="spot-status">Occupied</div>
@@ -152,29 +128,33 @@
   </div>
 
 
-  <div id="releaseSpotModal" tabindex="-1" aria-hidden="true" class="modal" style="display: none">
+  <div #releasespot id="releaseSpotModal" tabindex="-1" aria-hidden="true" class="modal" style="display: none">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
           <h5 class="modal-title">
             <i class="bi bi-car-front me-2"></i> Release Parking Spot
           </h5>
-          <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn-close btn-close-white"></button>
+          <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn-close btn-close-white" (click)="closeReleaseModel()"></button>
         </div>
         <div class="modal-body">
           <form novalidate="" id="releaseSpotForm" class="ng-valid ng-touched ng-dirty">
             <div class="mb-3">
               <label for="exitTime" class="form-label">Extra Amount</label>
-              <input type="text" id="exitTime" class="form-control ng-valid ng-touched ng-dirty" />
+              <input type="text" id="exitTime" class="form-control ng-valid ng-touched ng-dirty" name="extraCharge" [(ngModel)]="markExitObj.extraCharge"/>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" data-bs-dismiss="modal" class="btn btn-outline-secondary">
-            Cancel</button><button type="button" id="confirmReleaseBtn" class="btn btn-success">
+          <button type="button" data-bs-dismiss="modal" class="btn btn-outline-secondary" (click)="closeReleaseModel()">
+            Cancel</button>
+            <button type="button" id="confirmReleaseBtn" class="btn btn-success" (click)="onExitCar()">
             <i class="bi bi-check2-circle me-1"></i> Confirm Release
           </button>
         </div>
       </div>
     </div>
   </div>
+
+
+</div>
