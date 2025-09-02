@@ -81,10 +81,86 @@
   <!-- Parking Spots Layout -->
   <div class="parking-layout" id="parkingLayout">
     <div class="parking-spot available" *ngFor="let spot of parkingSpotArray; let i = index" data-id="{{spot}}"
-      data-status="available">
+      data-status="available" (click)="openModel(spot)">
       <i class="bi bi-p-square"></i>
       <div class="spot-number">A{{i+1}}</div>
       <div class="spot-status">Available</div>
+    </div>
+  </div>
+</div>
+
+
+
+<div #bookSpot id="bookSpotModal" tabindex="-1" aria-hidden="true" class="modal" style="display: none">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">
+          <i class="bi bi-car-front me-2"></i> Book Parking Spot
+        </h5>
+        <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn-close btn-close-white"  (click)="closeModel()"></button>
+      </div>
+      <div class="modal-body">
+        <form novalidate="" id="bookSpotForm" class="ng-untouched ng-pristine ng-invalid">
+          <div class="mb-3">
+            <label class="form-label">Park Spot No</label><input type="text" name="parkSpotNo" readonly=""
+              class="form-control ng-untouched ng-pristine ng-valid" />
+          </div>
+          <div class="mb-3">
+            <label for="vehicleNumber" class="form-label">Vehicle Number</label><input type="text" name="vehicleNo"
+              id="vehicleNumber" placeholder="Enter vehicle number" required=""
+              class="form-control ng-untouched ng-pristine ng-invalid" />
+          </div>
+          <div class="mb-3">
+            <label for="vehicleType" class="form-label">Amount</label><input type="number" name="amount"
+              id="vehicleNumber" placeholder="Enter Amount " required=""
+              class="form-control ng-untouched ng-pristine ng-valid" />
+          </div>
+          <div class="mb-3">
+            <label for="driverName" class="form-label">Customer Name</label><input type="text" name="custName"
+              id="driverName" placeholder="Customer name" class="form-control ng-untouched ng-pristine ng-valid" />
+          </div>
+          <div class="mb-3">
+            <label for="contactNumber" class="form-label">Contact Number</label><input type="text" name="custMobileNo"
+              id="contactNumber" placeholder="Enter contact number"
+              class="form-control ng-untouched ng-pristine ng-valid" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-bs-dismiss="modal" class="btn btn-outline-secondary"  (click)="closeModel()">
+          Cancel</button><button type="button" id="confirmBookBtn" class="btn btn-primary">
+          <i class="bi bi-check2-circle me-1"></i> Confirm Booking
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="releaseSpotModal" tabindex="-1" aria-hidden="true" class="modal" style="display: none">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">
+          <i class="bi bi-car-front me-2"></i> Release Parking Spot
+        </h5>
+        <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn-close btn-close-white"></button>
+      </div>
+      <div class="modal-body">
+        <form novalidate="" id="releaseSpotForm" class="ng-valid ng-touched ng-dirty">
+          <div class="mb-3">
+            <label for="exitTime" class="form-label">Extra Amount</label><input type="text" id="exitTime"
+              class="form-control ng-valid ng-touched ng-dirty" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-bs-dismiss="modal" class="btn btn-outline-secondary">
+          Cancel</button><button type="button" id="confirmReleaseBtn" class="btn btn-success">
+          <i class="bi bi-check2-circle me-1"></i> Confirm Release
+        </button>
+      </div>
     </div>
   </div>
 </div>

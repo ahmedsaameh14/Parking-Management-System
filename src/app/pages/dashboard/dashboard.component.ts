@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, viewChild } from '@angular/core';
 import { MasterService } from '../../services/master.service';
 import { IBuilding, IFloor, ISite, ResponseModel } from '../../models/user.model';
 import { CommonModule } from '@angular/common';
@@ -22,8 +22,22 @@ export class DashboardComponent implements OnInit {
   buildingId: number = 0;
   floorId: number = 0;
 
+  @ViewChild("bookSpot") bookModel !: ElementRef
+
   ngOnInit(){
     this.getSites()
+  }
+
+  openModel(spotNo : number){
+    if ( this.bookModel ){
+      this.bookModel.nativeElement.style.display = 'block'
+    }
+  }
+
+  closeModel(){
+    if ( this.bookModel ){
+      this.bookModel.nativeElement.style.display = 'none'
+    }
   }
 
   getSites(){
