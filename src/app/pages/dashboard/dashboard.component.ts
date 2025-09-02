@@ -24,11 +24,27 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild("bookSpot") bookModel !: ElementRef
 
+  bookSpotObj:any = {
+    "parkId": 0,
+    "floorId": 0,
+    "custName": "",
+    "custMobileNo": "",
+    "vehicleNo": "",
+    "parkDate": new Date(),
+    "parkSpotNo": 0,
+    "inTime": new Date(),
+    "outTime": null,
+    "amount": 0,
+    "extraCharge": 0,
+    "parkingNo": ""
+  }
+
   ngOnInit(){
     this.getSites()
   }
 
   openModel(spotNo : number){
+    this.bookSpotObj.parkSpotNo = spotNo
     if ( this.bookModel ){
       this.bookModel.nativeElement.style.display = 'block'
     }
@@ -38,6 +54,12 @@ export class DashboardComponent implements OnInit {
     if ( this.bookModel ){
       this.bookModel.nativeElement.style.display = 'none'
     }
+  }
+
+  onBookSpot(){
+    this._masterS.bookSpot(this.bookSpotObj).subscribe((res:any)=>{
+      alert("Spot Booked Successfully")
+    })
   }
 
   getSites(){

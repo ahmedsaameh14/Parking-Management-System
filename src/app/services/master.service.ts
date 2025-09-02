@@ -23,4 +23,9 @@ export class MasterService {
   GetFloorsByBuildingId(buildingId:number): Observable<ResponseModel>{
     return this.http.get<ResponseModel>("https://api.freeprojectapi.com/api/SmartParking/GetFloorsByBuildingId?id="+ buildingId)
   }
+
+  bookSpot(obj:any): Observable<ResponseModel> {
+    return this.http.post<ResponseModel>("https://api.freeprojectapi.com/api/SmartParking/AddParking" , obj)
+  }
+
 }

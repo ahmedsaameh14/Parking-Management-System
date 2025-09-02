@@ -98,38 +98,43 @@
         <h5 class="modal-title">
           <i class="bi bi-car-front me-2"></i> Book Parking Spot
         </h5>
-        <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn-close btn-close-white"  (click)="closeModel()"></button>
+        <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn-close btn-close-white"
+          (click)="closeModel()"></button>
       </div>
+
       <div class="modal-body">
         <form novalidate="" id="bookSpotForm" class="ng-untouched ng-pristine ng-invalid">
           <div class="mb-3">
-            <label class="form-label">Park Spot No</label><input type="text" name="parkSpotNo" readonly=""
+            <label class="form-label">Park Spot No</label>
+            <input type="text" name="parkSpotNo" readonly="" [(ngModel)]="bookSpotObj.parkSpotNo"
               class="form-control ng-untouched ng-pristine ng-valid" />
           </div>
           <div class="mb-3">
-            <label for="vehicleNumber" class="form-label">Vehicle Number</label><input type="text" name="vehicleNo"
-              id="vehicleNumber" placeholder="Enter vehicle number" required=""
-              class="form-control ng-untouched ng-pristine ng-invalid" />
+            <label for="vehicleNumber" class="form-label">Vehicle Number</label>
+            <input type="text" name="vehicleNo" id="vehicleNumber" placeholder="Enter vehicle number" required=""
+              [(ngModel)]="bookSpotObj.vehicleNo" class="form-control ng-untouched ng-pristine ng-invalid" />
           </div>
           <div class="mb-3">
-            <label for="vehicleType" class="form-label">Amount</label><input type="number" name="amount"
-              id="vehicleNumber" placeholder="Enter Amount " required=""
-              class="form-control ng-untouched ng-pristine ng-valid" />
+            <label for="vehicleType" class="form-label">Amount</label>
+            <input type="number" name="amount" id="vehicleNumber" placeholder="Enter Amount " required=""
+              [(ngModel)]="bookSpotObj.amount" class="form-control ng-untouched ng-pristine ng-valid" />
           </div>
           <div class="mb-3">
-            <label for="driverName" class="form-label">Customer Name</label><input type="text" name="custName"
-              id="driverName" placeholder="Customer name" class="form-control ng-untouched ng-pristine ng-valid" />
+            <label for="driverName" class="form-label">Customer Name</label>
+            <input type="text" name="custName" id="driverName" placeholder="Customer name"
+              class="form-control ng-untouched ng-pristine ng-valid" [(ngModel)]="bookSpotObj.custName" />
           </div>
           <div class="mb-3">
-            <label for="contactNumber" class="form-label">Contact Number</label><input type="text" name="custMobileNo"
-              id="contactNumber" placeholder="Enter contact number"
-              class="form-control ng-untouched ng-pristine ng-valid" />
+            <label for="contactNumber" class="form-label">Contact Number</label>
+            <input type="text" name="custMobileNo" id="contactNumber" placeholder="Enter contact number"
+              class="form-control ng-untouched ng-pristine ng-valid" [(ngModel)]="bookSpotObj.custMobileNo" />
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" data-bs-dismiss="modal" class="btn btn-outline-secondary"  (click)="closeModel()">
-          Cancel</button><button type="button" id="confirmBookBtn" class="btn btn-primary">
+        <button type="button" data-bs-dismiss="modal" class="btn btn-outline-secondary"
+          (click)="closeModel()">Cancel</button>
+        <button type="button" id="confirmBookBtn" class="btn btn-primary" (click)="onBookSpot()">
           <i class="bi bi-check2-circle me-1"></i> Confirm Booking
         </button>
       </div>
@@ -150,8 +155,8 @@
       <div class="modal-body">
         <form novalidate="" id="releaseSpotForm" class="ng-valid ng-touched ng-dirty">
           <div class="mb-3">
-            <label for="exitTime" class="form-label">Extra Amount</label><input type="text" id="exitTime"
-              class="form-control ng-valid ng-touched ng-dirty" />
+            <label for="exitTime" class="form-label">Extra Amount</label>
+            <input type="text" id="exitTime" class="form-control ng-valid ng-touched ng-dirty" />
           </div>
         </form>
       </div>
