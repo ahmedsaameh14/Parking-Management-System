@@ -11,7 +11,7 @@
       <div class="card text-center shadow-sm border-0">
         <div class="card-body">
           <h6 class="text-muted">Total Spots</h6>
-          <h3 class="fw-bold text-primary">120</h3>
+          <h3 class="fw-bold text-primary">{{parkingSpotArray.length}}</h3>
         </div>
       </div>
     </div>
@@ -67,17 +67,24 @@
         <!-- Select Floor -->
         <div class="col-12 col-md-4">
           <label class="form-label">Select Floor</label>
-          <select class="form-select" [(ngModel)]="floorId">
+          <select class="form-select" [(ngModel)]="floorId" (change)="onFloorSelect()">
             <option selected disabled>Choose floor...</option>
             <option [value]="floor.floorId" *ngFor="let floor of floorList ">{{floor.floorNo}}</option>
           </select>
         </div>
       </div>
-
-      <div class="d-flex gap-2 mt-4">
-        <button class="btn btn-primary">Apply</button>
-      </div>
     </div>
   </div>
 
+    <!-- Parking Spots Layout -->
+  <div class="parking-layout" id="parkingLayout">
+    <div class="parking-spot available" 
+        *ngFor="let spot of parkingSpotArray; let i = index" 
+        data-id="{{spot}}" 
+        data-status="available">
+      <i class="bi bi-p-square"></i>
+      <div class="spot-number">A{{i+1}}</div>
+      <div class="spot-status">Available</div>
+    </div>
+  </div>
 </div>

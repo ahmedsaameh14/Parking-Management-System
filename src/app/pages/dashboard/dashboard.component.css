@@ -19,3 +19,52 @@ h1 {
 .form-label {
   font-weight: 600;
 }
+
+
+.parking-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.parking-spot {
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  color: #fff; /* make text white */
+}
+
+.parking-spot i {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.spot-number {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.spot-status {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Green for available */
+.available {
+  background-color: #28a745; /* Bootstrap green */
+}
+
+/* Red for unavailable */
+.unavailable {
+  background-color: #dc3545; /* Bootstrap red */
+}
+
+.parking-spot:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}

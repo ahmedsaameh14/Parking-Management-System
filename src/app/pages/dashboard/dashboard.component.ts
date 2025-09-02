@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   siteList : ISite[] = [];
   buildingList : any[] =[];
   floorList : any[] = [];
+  parkingSpotArray : number[]=[];
 
   siteId: number = 0;
   buildingId: number = 0;
@@ -41,5 +42,11 @@ export class DashboardComponent implements OnInit {
     this._masterS.GetFloorsByBuildingId(this.buildingId).subscribe((res:ResponseModel)=>{
       this.floorList = res.data
     })
+  }
+  onFloorSelect(){
+    const floor = this.floorList.find((m: any)=> m.floorId == this.floorId);
+    for (let index = 1 ; index <= floor.totalParkingSpots ; index++){
+      this.parkingSpotArray.push(index);
+    }
   }
 }
